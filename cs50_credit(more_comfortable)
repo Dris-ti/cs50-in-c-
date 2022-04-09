@@ -1,0 +1,88 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    long long int num = 0, len= 0, for_check, sum_1 = 0, len_num, mul_num, for_check_2, for_check_3, sim_num, sim_num_mod, sum_2, main_sum, last_dig_sum;
+    cout<< "Number: ";
+    cin>>num;
+
+    len_num = num;
+
+    while( len_num > 0)
+    {
+        len_num = len_num / 10;
+        len++;
+    }
+
+    mul_num = num / 10;
+    for(int i = 0; i < len; i++)
+    {
+        for_check = mul_num % 10;
+        for_check_2 = for_check * 2;
+        if(for_check_2 > 9)
+        {
+            for(int j = 0; j < 2; j++)
+            {
+                for_check_3 = for_check_2 % 10;
+                sum_1 = sum_1 + for_check_3;
+                for_check_2 = for_check_2 / 10;
+            }
+        }
+        sum_1 = for_check_2  + sum_1;
+        mul_num = mul_num / 100;
+
+    }
+
+    sim_num = num;
+    for(int i = 0; i < len; i++)
+    {
+        sim_num_mod = sim_num % 10;
+        sum_2 = sim_num_mod + sum_2;
+        sim_num = sim_num / 100;
+    }
+
+    main_sum = sum_1 + sum_2;
+
+    last_dig_sum = main_sum % 10;
+
+    if(last_dig_sum == 0)
+    {
+        cout<< "Your credit card is valid"<<endl;
+    }
+    else
+    {
+        cout<< "Your credit card is not valid"<<endl;
+    }
+
+    if(len == 15)
+    {
+        num = num / 10000000000000;
+        if((num == 34) || (num == 37))
+        {
+            cout<< "American Express";
+        }
+    }
+
+    else if(len == 13)
+    {
+        num = num / 1000000000000;
+            if(num == 4)
+            {
+                cout<< "Visa";
+            }
+    }
+
+    else if(len == 16)
+    {
+        num = num / 100000000000000;
+        if(num >=51 && num <= 55)
+        {
+            cout<< "Master Card";
+        }
+        else if(num >=40 && num <= 49)
+        {
+            cout<< "Visa";
+        }
+    }
+}
