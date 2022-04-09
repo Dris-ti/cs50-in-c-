@@ -1,0 +1,24 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int height, row, space, column;
+    do{
+        cout<<"Enter a number: ";
+        cin>>height;
+    }
+    while(height < 0);
+   for(row = 0; row < height; row++)
+   {
+       for(space = 0; space < height - row - 1; space++)
+       {
+           cout<<" ";
+       }
+       for(column = 0; column <= row; column++)
+       {
+           cout<<"#";
+       }
+       cout<<endl;
+   }
+
+}
