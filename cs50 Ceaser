@@ -1,0 +1,57 @@
+#include<iostream>
+#include<string>
+#include<ctype.h>
+using namespace std;
+
+int i, j, key, c, alpha;
+char ciper;
+string ciphertext(string text, int key, int i)
+{
+    cout<< "Ciphertext: ";
+    for(j = 0; j < i; j++)
+    {
+        if(isalpha(text[j]))
+        {
+            if(isupper(text[j]))
+            {
+                alpha = text[j] - 65;
+                c = (alpha + key) % 26;
+                ciper = c + 65;
+                cout<<ciper;
+            }
+            else if(islower(text[j]))
+            {
+                alpha = text[j] - 97;
+                c = (alpha + key) % 26;
+                ciper = c + 97;
+                cout<<ciper;
+            }
+        }
+        else
+            cout<<text[j];
+
+    }
+}
+
+int main()
+{
+    string text;
+
+    cout<<"Key: ";
+    cin>>key;
+
+
+    cout<< "Text: ";
+    cin.ignore();
+    getline(cin,text);
+
+
+
+    while(text[i] != '\0')
+    {
+        i++;
+    }
+
+
+    ciphertext(text, key, i);
+}
